@@ -26,7 +26,7 @@ export class CreateTagService {
       await tagsRepository.save(tag)
   
       return tag
-      
+
     } catch (error) {
       return {
         error: error.message
@@ -34,4 +34,3 @@ export class CreateTagService {
     }    
   }
 }
-
