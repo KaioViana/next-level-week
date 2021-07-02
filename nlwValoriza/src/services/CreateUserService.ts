@@ -11,9 +11,8 @@ interface IUserRequest {
 }
 
 export class CreateUserService {
-  async execute({ name, email, admin, password }: IUserRequest) {
+  async execute({ name, email, admin=false, password }: IUserRequest) {
     const usersRepository = getCustomRepository(UsersRepositories)
-    const passwordHash = await hash(password, 8)
 
     try {
       if(!email) {
@@ -27,6 +26,8 @@ export class CreateUserService {
       if(userAlreadyExists) {
         throw new Error('User already exists') 
       }
+
+      const passwordHash = await hash(password, 8)
   
       const user = usersRepository.create({
         name,
