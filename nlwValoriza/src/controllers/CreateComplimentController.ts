@@ -7,9 +7,10 @@ export class CreateComplimentController {
     const {
       tag_id,
       user_receiver,
-      user_sender,
       message
     } = request.body
+
+    const user_sender = request.user_id  
 
     const createComplimentService = new CreateComplimentService()
 
